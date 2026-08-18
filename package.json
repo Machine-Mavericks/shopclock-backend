@@ -1,0 +1,20 @@
+{
+  "name": "shopclock-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Machine-Mavericks/shopclock-backend.git",
+  "author": "Liam Pilson <liamphone0@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "dev": "yarn run tsx src/index.ts",
+    "build": "yarn run tsc --project tsconfig.json"
+  },
+  "dependencies": {
+    "chalk": "^6.0.0"
+  }
+}
