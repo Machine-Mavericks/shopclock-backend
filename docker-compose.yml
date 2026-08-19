@@ -1,0 +1,50 @@
+services:
+  app:
+    image: node:latest
+    container_name: shopclock
+    working_dir: /app
+
+    command: sh -c "npm install -g yarn && yarn install && yarn run dev"
+
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: shopclock
+      DB_USER: shopclock
+      DB_PASSWORD: robotics
+    
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17-alpine
+    container_name: shopclock-db
+
+    environment:
+      POSTGRES_DB: shopclock
+      POSTGRES_USER: shopclock
+      POSTGRES_PASSWORD: robotics
+    
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopclock -d shopclock"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  node_modules:

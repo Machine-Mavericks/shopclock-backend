@@ -6,7 +6,9 @@
   "author": "Liam Pilson <liamphone0@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.2.0",
+    "@types/pg": "^8.23.1",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   },
@@ -15,6 +17,8 @@
     "build": "yarn run tsc --project tsconfig.json"
   },
   "dependencies": {
-    "chalk": "^6.0.0"
+    "chalk": "^6.0.0",
+    "express": "^5.2.1",
+    "pg": "^8.23.0"
   }
 }
